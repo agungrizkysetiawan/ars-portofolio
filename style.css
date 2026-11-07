@@ -299,11 +299,18 @@ footer{text-align:center;color:var(--muted);padding:70px 20px 30px;font-size:.88
 }
 
 /* ===== Responsive ===== */
-@media(max-width:900px){
-  .logo-name{font-size:.92rem}
-}
-@media(max-width:480px){
-  .logo-name{display:none}
+.logo-name{font-family:'Sora',sans-serif;font-weight:800;font-size:1.05rem;letter-spacing:.02em;white-space:nowrap;
+  background:linear-gradient(90deg,#9ccaff,#4da3ff,#a78bfa,#4da3ff,#9ccaff);background-size:250% 100%;
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 0 10px rgba(77,163,255,.55));
+  animation:shine 6s linear infinite,glow 3s ease-in-out infinite alternate}
+.logo-name em{font-style:normal;font-weight:700}
+.logo:hover .logo-name{filter:drop-shadow(0 0 16px rgba(124,92,255,.85))}
+
+@keyframes shine{to{background-position:250% 0}}
+@keyframes glow{
+  from{filter:drop-shadow(0 0 6px rgba(77,163,255,.4))}
+  to{filter:drop-shadow(0 0 14px rgba(124,92,255,.75))}
 }
 @media(max-width:900px){
   .s-lang,.s-frame,.s-db,.s-tools{grid-column:span 12}
