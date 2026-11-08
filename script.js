@@ -1,27 +1,17 @@
-/* =========================================================
-   Helper kecil
-   ========================================================= */
+
 const $ = (sel, root = document) => root.querySelector(sel);
 const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
 
 // Klon <template> berdasarkan id
 const klon = (id) => document.getElementById(id).content.cloneNode(true);
 
-// Isi elemen bertanda data-slot="nama"
 const slot = (root, nama) => root.querySelector(`[data-slot="${nama}"]`);
 const isi = (root, nama, teks) => { slot(root, nama).textContent = teks; };
 
 
-/* =========================================================
-   1. FOOTER: tahun otomatis
-   ========================================================= */
 const elTahun = $("#year");
 if (elTahun) elTahun.textContent = new Date().getFullYear();
 
-
-/* =========================================================
-   2. FORM KONTAK: membuka aplikasi email pengunjung
-   ========================================================= */
 const EMAIL_TUJUAN = "agungrizkysetiawannn@gmail.com";
 const form = $("#form");
 if (form) {
@@ -35,11 +25,7 @@ if (form) {
     window.location.href = `mailto:${EMAIL_TUJUAN}?subject=${subjek}&body=${isiPesan}`;
   });
 }
-
-
-/* =========================================================
-   3. SLIDESHOW FOTO PROFIL (otomatis tiap 4 detik)
-   ========================================================= */
+// slide show foto profile
 const slides = $$(".slide");
 const dots = $$(".dots button");
 let n = 0, timer;
@@ -78,10 +64,7 @@ if (slides.length) {
   mulai();
 }
 
-
-/* =========================================================
-   4. SKILL: jika logo gagal dimuat, ganti lencana huruf
-   ========================================================= */
+// skill logo
 $$(".pill img").forEach((img) => {
   const ganti = () => {
     const b = document.createElement("span");
@@ -94,9 +77,7 @@ $$(".pill img").forEach((img) => {
 });
 
 
-/* =========================================================
-   5. PROJEK: data
-   ========================================================= */
+// projek data
 const label = { ta: "Tugas Akhir", magang: "Magang", akademik: "Akademik" };
 
 // Opsional per projek: github: "https://...", demo: "https://..."
@@ -239,10 +220,7 @@ const projects = [
   }
 ];
 
-
-/* =========================================================
-   6. PROJEK: pencari gambar otomatis
-   ========================================================= */
+// pencari gambar otomatis
 const FOLDERS = ["assets/projects/", "assets/", "assets/images/", "assets/img/"];
 const EXTS = ["png", "jpg", "jpeg", "webp"];
 
@@ -285,10 +263,7 @@ function pasangGambar(img) {
   probe.src = list[0];
 }
 
-
-/* =========================================================
-   7. PROJEK: logo teknologi, link, dan kartu
-   ========================================================= */
+// logo teknologi
 const DEV = "https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/";
 const ICONS = {
   "Unreal Engine 5": "unrealengine/unrealengine-original.svg",
@@ -379,10 +354,7 @@ if (grid) {
   $$("img[data-file]", grid).forEach(pasangGambar);
 }
 
-
-/* =========================================================
-   8. PROJEK: jendela detail (modal)
-   ========================================================= */
+//jendela detail 
 const modal = $("#modal");
 const modalContent = $("#modal-content");
 const tutup = $("#modal-close");
@@ -452,10 +424,7 @@ if (grid && modal) {
   document.addEventListener("keydown", (e) => { if (e.key === "Escape") tutupModal(); });
 }
 
-
-/* =========================================================
-   9. NAVBAR: tandai menu sesuai bagian yang sedang dilihat
-   ========================================================= */
+// navbar 
 const navLinks = $$(".nav nav a");
 const navSections = navLinks
   .map((a) => document.querySelector(a.getAttribute("href")))
